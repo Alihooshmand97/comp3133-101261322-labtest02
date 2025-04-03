@@ -1,0 +1,19 @@
+<h2>Harry Potter Characters</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px;">
+  <mat-card *ngFor="let character of characters"
+            style="width: 180px; text-align: center; background-color: #1e1e1e; color: white; cursor: pointer;"
+            [routerLink]="['/details', character.id]">
+    
+    <img mat-card-image [src]="character.image" alt="{{ character.name }}" style="height: 220px; object-fit: cover;" *ngIf="character.image">
+    
+    <mat-card-title style="font-size: 16px; margin-top: 8px;">
+      {{ character.name }}
+    </mat-card-title>
+    
+    <mat-card-subtitle [ngStyle]="{ color: character.house === 'Gryffindor' ? 'red' : character.house === 'Slytherin' ? 'green' : 'gray' }">
+      {{ character.house || 'No House' }}
+    </mat-card-subtitle>
+    
+  </mat-card>
+</div>
